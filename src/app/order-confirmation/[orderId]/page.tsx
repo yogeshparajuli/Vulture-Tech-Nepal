@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
 import { prisma } from "@/lib/prisma";
+import { auth } from "@/auth";
 import { formatNPR } from "@/lib/format";
 
 export const metadata = { title: "Order Confirmed | Vulture Tech Nepal" };
@@ -18,6 +19,15 @@ export default async function OrderConfirmationPage({
   });
 
   if (!order) notFound();
+
+  // Orders placed by a signed-in customer are only visible to that customer
+  // (or an admin). Guest orders remain reachable via their unguessable ID.
+  if (order.userId) {
+    const session = await auth();
+    const isOwner = session?.user?.id === order.userId;
+    const isAdmin = session?.user?.role === "ADMIN";
+    if (!isOwner && !isAdmin) notFound();
+  }
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-20 text-center sm:px-6 lg:px-8">

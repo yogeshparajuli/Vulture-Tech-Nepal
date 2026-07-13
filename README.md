@@ -51,12 +51,14 @@ are still created and stored in the database normally.
 2. For local webhook testing, run `stripe listen --forward-to localhost:3000/api/webhooks/stripe` and put the printed secret in `STRIPE_WEBHOOK_SECRET`.
 3. The "Card Payment (Stripe)" option will automatically become available at checkout.
 
-## Seeded Accounts
+## Seeded Accounts (local development only)
 
-| Role | Email | Password |
-|---|---|---|
-| Admin | `admin@vulturetech.com.np` | `Admin@123` |
-| Customer | `demo@vulturetech.com.np` | `Demo@123` |
+The seed script creates an admin (`admin@vulturetech.com.np`) and a demo
+customer (`demo@vulturetech.com.np`) with default passwords `Admin@123` /
+`Demo@123`. **These defaults are for local development.** For any deployed
+database, set `ADMIN_PASSWORD` and `DEMO_PASSWORD` in the environment before
+seeding (or change the passwords directly afterwards) — never leave the
+defaults live on a public site.
 
 Sign in as the admin to access `/admin` (dashboard, product CRUD, order status management).
 

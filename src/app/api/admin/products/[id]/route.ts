@@ -28,12 +28,25 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
   const { id } = await params;
-  const body = await req.json();
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+  }
   const parsed = productUpdateSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
       { error: parsed.error.issues[0]?.message ?? "Invalid product data" },
       { status: 400 }
+    );
+  }
+
+  const clash = await prisma.product.findUnique({ where: { slug: parsed.data.slug } });
+  if (clash && clash.id !== id) {
+    return NextResponse.json(
+      { error: "A product with this slug already exists" },
+      { status: 409 }
     );
   }
 

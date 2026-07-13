@@ -467,7 +467,9 @@ function pickN<T>(arr: T[], n: number): T[] {
 async function main() {
   console.log("Seeding database...");
 
-  const adminPassword = await bcrypt.hash("Admin@123", 10);
+  // For anything public-facing, set ADMIN_PASSWORD (and DEMO_PASSWORD) in the
+  // environment — the defaults below are for local development only.
+  const adminPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || "Admin@123", 10);
   await prisma.user.upsert({
     where: { email: "admin@vulturetech.com.np" },
     update: {},
@@ -479,7 +481,7 @@ async function main() {
     },
   });
 
-  const demoPassword = await bcrypt.hash("Demo@123", 10);
+  const demoPassword = await bcrypt.hash(process.env.DEMO_PASSWORD || "Demo@123", 10);
   await prisma.user.upsert({
     where: { email: "demo@vulturetech.com.np" },
     update: {},

@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { formatNPR } from "@/lib/format";
@@ -15,8 +16,12 @@ const STATUS_STYLES: Record<string, string> = {
 
 export default async function AccountPage() {
   const session = await auth();
+  // Defense in depth: without this, an absent session would make the Prisma
+  // filter `userId: undefined` — which matches ALL orders, not none.
+  if (!session?.user?.id) redirect("/login?callbackUrl=/account");
+
   const orders = await prisma.order.findMany({
-    where: { userId: session?.user?.id },
+    where: { userId: session.user.id },
     include: { items: true },
     orderBy: { createdAt: "desc" },
   });
