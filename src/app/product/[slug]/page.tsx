@@ -4,7 +4,9 @@ import { CheckCircle2, ChevronRight } from "lucide-react";
 import ProductImage from "@/components/ProductImage";
 import ProductCard from "@/components/ProductCard";
 import AddToCartSection from "@/components/shop/AddToCartSection";
-import { getProductBySlug, getRelatedProducts } from "@/lib/products";
+import ReviewStars from "@/components/shop/ReviewStars";
+import ReviewsSection from "@/components/shop/ReviewsSection";
+import { getProductBySlug, getRelatedProducts, getProductReviews } from "@/lib/products";
 import { categoryByKey } from "@/lib/categories";
 import { formatNPR } from "@/lib/format";
 
@@ -28,6 +30,7 @@ export default async function ProductPage({
   if (!product) notFound();
 
   const related = await getRelatedProducts(product.category, product.slug);
+  const reviews = await getProductReviews(product.id);
   const cat = categoryByKey(product.category);
 
   return (
@@ -67,7 +70,17 @@ export default async function ProductPage({
           <h1 className="mt-2 font-display text-3xl font-bold text-cream sm:text-4xl">
             {product.name}
           </h1>
-          <p className="mt-2 text-sm text-slate">Brand: {product.brand}</p>
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            <p className="text-sm text-slate">Brand: {product.brand}</p>
+            {product.averageRating !== null && (
+              <div className="flex items-center gap-1.5">
+                <ReviewStars rating={product.averageRating} />
+                <span className="text-xs text-slate">
+                  {product.averageRating.toFixed(1)} ({product.reviewCount})
+                </span>
+              </div>
+            )}
+          </div>
 
           <p className="mt-6 font-display text-3xl font-bold text-cream">
             {formatNPR(product.price)}
@@ -114,6 +127,8 @@ export default async function ProductPage({
           </div>
         </section>
       )}
+
+      <ReviewsSection reviews={reviews} averageRating={product.averageRating} />
     </div>
   );
 }

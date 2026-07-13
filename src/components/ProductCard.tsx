@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Plus } from "lucide-react";
+import { Plus, Star } from "lucide-react";
 import ProductImage from "./ProductImage";
 import { useCart } from "@/components/cart/CartContext";
 import { formatNPR } from "@/lib/format";
@@ -33,6 +33,14 @@ export default function ProductCard({ product }: { product: ClientProduct }) {
           </h3>
         </Link>
         <p className="text-xs text-slate">{product.brand}</p>
+        {product.averageRating !== null && (
+          <div className="flex items-center gap-1 text-gold">
+            <Star className="h-3 w-3" fill="currentColor" strokeWidth={0} />
+            <span className="text-xs text-slate">
+              {product.averageRating.toFixed(1)} ({product.reviewCount})
+            </span>
+          </div>
+        )}
         <div className="mt-auto flex items-center justify-between pt-2">
           <span className="font-display text-lg font-bold text-cream">
             {formatNPR(product.price)}

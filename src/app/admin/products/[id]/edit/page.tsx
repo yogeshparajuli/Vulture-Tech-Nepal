@@ -21,7 +21,7 @@ export default async function EditProductPage({
     specs = [];
   }
 
-  const clientProduct: ClientProduct = { ...product, specs };
+  const clientProduct: ClientProduct = { ...product, specs, averageRating: null, reviewCount: 0 };
 
   return (
     <div>

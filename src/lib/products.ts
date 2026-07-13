@@ -14,7 +14,20 @@ export type ClientProduct = {
   imageUrl: string | null;
   featured: boolean;
   specs: string[];
+  averageRating: number | null;
+  reviewCount: number;
 };
+
+export type ClientReview = {
+  id: string;
+  reviewerName: string;
+  reviewerImage: string;
+  rating: number;
+  comment: string;
+  createdAt: string;
+};
+
+const REVIEW_RATING_SELECT = { reviews: { select: { rating: true } } } as const;
 
 function serialize(p: {
   id: string;
@@ -29,6 +42,7 @@ function serialize(p: {
   imageUrl: string | null;
   featured: boolean;
   specs: string;
+  reviews: { rating: number }[];
 }): ClientProduct {
   let specs: string[] = [];
   try {
@@ -36,6 +50,10 @@ function serialize(p: {
   } catch {
     specs = [];
   }
+  const reviewCount = p.reviews.length;
+  const averageRating =
+    reviewCount > 0 ? p.reviews.reduce((sum, r) => sum + r.rating, 0) / reviewCount : null;
+
   return {
     id: p.id,
     name: p.name,
@@ -49,6 +67,8 @@ function serialize(p: {
     imageUrl: p.imageUrl,
     featured: p.featured,
     specs,
+    averageRating,
+    reviewCount,
   };
 }
 
@@ -57,6 +77,7 @@ export async function getFeaturedProducts(limit = 6): Promise<ClientProduct[]> {
     where: { featured: true },
     take: limit,
     orderBy: { createdAt: "desc" },
+    include: REVIEW_RATING_SELECT,
   });
   return products.map(serialize);
 }
@@ -85,12 +106,16 @@ export async function getAllProducts(filters?: {
         : filters?.sort === "price-desc"
           ? { price: "desc" }
           : { createdAt: "desc" },
+    include: REVIEW_RATING_SELECT,
   });
   return products.map(serialize);
 }
 
 export async function getProductBySlug(slug: string): Promise<ClientProduct | null> {
-  const product = await prisma.product.findUnique({ where: { slug } });
+  const product = await prisma.product.findUnique({
+    where: { slug },
+    include: REVIEW_RATING_SELECT,
+  });
   return product ? serialize(product) : null;
 }
 
@@ -102,6 +127,22 @@ export async function getRelatedProducts(
   const products = await prisma.product.findMany({
     where: { category, slug: { not: excludeSlug } },
     take: limit,
+    include: REVIEW_RATING_SELECT,
   });
   return products.map(serialize);
+}
+
+export async function getProductReviews(productId: string): Promise<ClientReview[]> {
+  const reviews = await prisma.review.findMany({
+    where: { productId },
+    orderBy: { createdAt: "desc" },
+  });
+  return reviews.map((r) => ({
+    id: r.id,
+    reviewerName: r.reviewerName,
+    reviewerImage: r.reviewerImage,
+    rating: r.rating,
+    comment: r.comment,
+    createdAt: r.createdAt.toISOString(),
+  }));
 }

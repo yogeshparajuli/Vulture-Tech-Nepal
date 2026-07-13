@@ -346,6 +346,124 @@ const products: {
   },
 ];
 
+// Free-to-use Nepali portrait photos from Pexels (pexels.com/license) used as reviewer avatars.
+const REVIEWERS: { name: string; image: string }[] = [
+  {
+    name: "Anish Shrestha",
+    image:
+      "https://images.pexels.com/photos/35045742/pexels-photo-35045742/free-photo-of-portrait-of-local-man-in-karnali-province-nepal.png?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Bikash Tamang",
+    image: "https://images.pexels.com/photos/4145377/pexels-photo-4145377.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Prakash Thapa",
+    image:
+      "https://images.pexels.com/photos/34140359/pexels-photo-34140359/free-photo-of-stylish-man-in-nepali-hat-outdoors.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Suresh Magar",
+    image: "https://images.pexels.com/photos/13157781/pexels-photo-13157781.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Nabin Adhikari",
+    image:
+      "https://images.pexels.com/photos/36799484/pexels-photo-36799484/free-photo-of-smiling-man-with-hat-on-rural-dirt-road.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Rajesh Khadka",
+    image: "https://images.pexels.com/photos/1324921/pexels-photo-1324921.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Dipesh Shakya",
+    image: "https://images.pexels.com/photos/8160812/pexels-photo-8160812.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Sabina Gurung",
+    image:
+      "https://images.pexels.com/photos/19324443/pexels-photo-19324443/free-photo-of-portrait-of-a-pretty-brunette-wearing-a-traditional-robe.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Anjali Karki",
+    image:
+      "https://images.pexels.com/photos/36024428/pexels-photo-36024428/free-photo-of-portrait-of-a-smiling-nepali-woman-in-traditional-attire.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Sunita Rai",
+    image:
+      "https://images.pexels.com/photos/34962108/pexels-photo-34962108/free-photo-of-smiling-elderly-woman-in-traditional-nepalese-attire.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Puja Lama",
+    image:
+      "https://images.pexels.com/photos/24994360/pexels-photo-24994360/free-photo-of-woman-in-traditional-clothing-on-dirt-road.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Kritika Basnet",
+    image:
+      "https://images.pexels.com/photos/34463075/pexels-photo-34463075/free-photo-of-smiling-woman-in-traditional-dress-outdoors.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Manisha Poudel",
+    image: "https://images.pexels.com/photos/8791229/pexels-photo-8791229.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Sarita Chhetri",
+    image: "https://images.pexels.com/photos/12889460/pexels-photo-12889460.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+  {
+    name: "Rukmini Ghimire",
+    image:
+      "https://images.pexels.com/photos/20265603/pexels-photo-20265603/free-photo-of-woman-wearing-traditional-costume-in-nepal.jpeg?auto=compress&cs=tinysrgb&w=200",
+  },
+];
+
+const REVIEW_COMMENTS: Record<Category, string[]> = {
+  CCTV_CAMERAS: [
+    "Picture quality at night is genuinely impressive — caught someone at our gate at 2 AM crystal clear.",
+    "Been running this for six months straight with zero downtime. Exactly what our shop needed for the entrance.",
+    "Setup was straightforward and the mobile alerts are instant. Worth every rupee for the peace of mind.",
+    "Solid build quality, handled the whole monsoon season without a single issue. Highly recommend for outdoor use.",
+    "Ordered through Vulture Tech and their technician helped with the install too. Footage is sharp even in low light.",
+  ],
+  MEMORY_CARDS: [
+    "Been recording 24/7 on my CCTV setup for months and this card hasn't failed once. Reliable as promised.",
+    "Fast enough for continuous NVR recording without any dropped frames. No complaints so far.",
+    "Good value for the endurance rating — replaced a cheaper card that kept corrupting footage and this one's flawless.",
+    "Handles the constant read-write cycle of dashcam recording without heating up. Solid choice.",
+  ],
+  MONITORS: [
+    "Colors are sharp and the viewing angle is great even with a few of us watching the control room feed together.",
+    "Perfect size for split-screen CCTV viewing, no lag noticed even with several cameras running at once.",
+    "Good build and the stand is sturdy. Been using it daily at the front desk without any issues.",
+    "Display is crisp for the price and setup took just a few minutes with the included cables.",
+  ],
+  HARD_DISKS: [
+    "Running 8 cameras continuously for over a year now and the drive is still going strong. Genuinely surveillance-grade.",
+    "Quiet operation and it handles the constant write load from our NVR without any hiccups.",
+    "No corrupted footage even after a power outage at our building. Solid reliability for the price.",
+    "Exactly what was recommended for a multi-camera setup — no dropped recordings months in.",
+  ],
+  ACCESSORIES: [
+    "Well-built and easy to install, exactly matched what was described on the listing.",
+    "Been through two dry seasons and one monsoon without any issues. Good quality for the price.",
+    "Simple, does the job perfectly. The Vulture Tech team even explained the setup over the phone.",
+    "Arrived quickly and worked immediately with our existing setup, no compatibility issues at all.",
+  ],
+};
+
+function pickN<T>(arr: T[], n: number): T[] {
+  const copy = [...arr];
+  const picked: T[] = [];
+  for (let i = 0; i < n && copy.length > 0; i++) {
+    const idx = Math.floor(Math.random() * copy.length);
+    picked.push(copy[idx]);
+    copy.splice(idx, 1);
+  }
+  return picked;
+}
+
 async function main() {
   console.log("Seeding database...");
 
@@ -373,9 +491,11 @@ async function main() {
     },
   });
 
+  let reviewCount = 0;
+
   for (const p of products) {
     const slug = slugify(p.name);
-    await prisma.product.upsert({
+    const product = await prisma.product.upsert({
       where: { slug },
       update: {
         imageUrl: p.imageUrl,
@@ -395,9 +515,28 @@ async function main() {
         specs: JSON.stringify(p.specs),
       },
     });
+
+    await prisma.review.deleteMany({ where: { productId: product.id } });
+
+    const numReviews = 2 + Math.round(Math.random());
+    const reviewers = pickN(REVIEWERS, numReviews);
+    const comments = pickN(REVIEW_COMMENTS[p.category], numReviews);
+
+    for (let i = 0; i < numReviews; i++) {
+      await prisma.review.create({
+        data: {
+          productId: product.id,
+          reviewerName: reviewers[i].name,
+          reviewerImage: reviewers[i].image,
+          rating: Math.random() < 0.75 ? 5 : 4,
+          comment: comments[i],
+        },
+      });
+      reviewCount++;
+    }
   }
 
-  console.log(`Seeded ${products.length} products, admin + demo users.`);
+  console.log(`Seeded ${products.length} products, ${reviewCount} reviews, admin + demo users.`);
 }
 
 main()
