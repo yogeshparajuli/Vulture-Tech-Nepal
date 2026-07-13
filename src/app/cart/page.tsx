@@ -19,7 +19,7 @@ export default function CartPage() {
         <p className="text-slate">Browse our catalog and find what you need.</p>
         <Link
           href="/shop"
-          className="mt-2 rounded-full bg-rust px-6 py-3 text-sm font-semibold text-cream hover:bg-rust/90 transition-colors"
+          className="mt-2 rounded-sm bg-rust px-6 py-3 text-sm font-semibold text-cream hover:bg-[#c8501f] transition-colors"
         >
           Browse Products
         </Link>
@@ -36,7 +36,7 @@ export default function CartPage() {
           {items.map((item) => (
             <div
               key={item.productId}
-              className="flex gap-4 rounded-2xl card-border bg-surface p-4"
+              className="flex gap-4 rounded-sm card-border bg-surface p-4"
             >
               <ProductImage
                 category={item.category}
@@ -62,7 +62,7 @@ export default function CartPage() {
                   </button>
                 </div>
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3 rounded-full border border-white/10 px-2 py-1.5">
+                  <div className="flex items-center gap-3 rounded-sm border border-white/10 px-2 py-1.5">
                     <button
                       onClick={() => setQuantity(item.productId, item.quantity - 1)}
                       className="text-slate hover:text-cream transition-colors"
@@ -91,7 +91,7 @@ export default function CartPage() {
           ))}
         </div>
 
-        <div className="h-fit rounded-2xl card-border bg-surface p-6">
+        <div className="h-fit rounded-sm card-border bg-surface p-6">
           <h2 className="font-display text-lg font-semibold text-cream">
             Order Summary
           </h2>
@@ -103,7 +103,7 @@ export default function CartPage() {
             <span className="text-slate">Delivery</span>
             <span className="text-cream">Calculated at checkout</span>
           </div>
-          <div className="mt-4 flex items-center justify-between border-t border-white/5 pt-4">
+          <div className="mt-4 flex items-center justify-between border-t border-[var(--line)] pt-4">
             <span className="font-medium text-cream">Total</span>
             <span className="font-display text-xl font-bold text-cream">
               {formatNPR(subtotal)}
@@ -111,7 +111,7 @@ export default function CartPage() {
           </div>
           <Link
             href="/checkout"
-            className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-rust py-3.5 text-sm font-semibold text-cream hover:bg-rust/90 transition-colors"
+            className="mt-6 flex w-full items-center justify-center gap-2 rounded-sm bg-rust py-3.5 text-sm font-semibold text-cream hover:bg-[#c8501f] transition-colors"
           >
             Proceed to Checkout <ArrowRight className="h-4 w-4" />
           </Link>

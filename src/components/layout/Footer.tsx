@@ -23,7 +23,7 @@ function InstagramIcon() {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-surface">
+    <footer className="border-t border-[var(--line)] bg-surface">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
@@ -36,14 +36,14 @@ export default function Footer() {
               <a
                 href="#"
                 aria-label="Facebook"
-                className="rounded-full border border-white/10 p-2 text-slate hover:text-gold hover:border-gold/40 transition-colors"
+                className="rounded-sm border border-white/10 p-2 text-slate hover:text-gold hover:border-gold/40 transition-colors"
               >
                 <FacebookIcon />
               </a>
               <a
                 href="#"
                 aria-label="Instagram"
-                className="rounded-full border border-white/10 p-2 text-slate hover:text-gold hover:border-gold/40 transition-colors"
+                className="rounded-sm border border-white/10 p-2 text-slate hover:text-gold hover:border-gold/40 transition-colors"
               >
                 <InstagramIcon />
               </a>
@@ -111,7 +111,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[var(--line)] pt-6 sm:flex-row">
           <p className="text-xs text-slate">
             © {new Date().getFullYear()} Vulture Tech Nepal. All rights reserved.
           </p>

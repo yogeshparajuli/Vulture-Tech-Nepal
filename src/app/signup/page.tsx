@@ -48,8 +48,8 @@ export default function SignupPage() {
 
   return (
     <div className="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-4 py-16 sm:px-6">
-      <div className="rounded-2xl card-border bg-surface p-8">
-        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-rust/15 text-rust">
+      <div className="rounded-sm card-border bg-surface p-8">
+        <span className="flex h-11 w-11 items-center justify-center rounded-sm bg-rust/15 text-rust">
           <UserPlus className="h-5 w-5" />
         </span>
         <h1 className="mt-4 font-display text-2xl font-bold text-cream">
@@ -64,14 +64,14 @@ export default function SignupPage() {
             name="name"
             required
             placeholder="Full Name"
-            className="w-full rounded-xl card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
+            className="w-full rounded-sm card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
           />
           <input
             name="email"
             type="email"
             required
             placeholder="Email Address"
-            className="w-full rounded-xl card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
+            className="w-full rounded-sm card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
           />
           <input
             name="password"
@@ -79,7 +79,7 @@ export default function SignupPage() {
             required
             minLength={6}
             placeholder="Password (min. 6 characters)"
-            className="w-full rounded-xl card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
+            className="w-full rounded-sm card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
           />
 
           {error && <p className="text-sm text-rust">{error}</p>}
@@ -87,7 +87,7 @@ export default function SignupPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full rounded-full bg-rust py-3 text-sm font-semibold text-cream transition-colors hover:bg-rust/90 disabled:opacity-60"
+            className="w-full rounded-sm bg-rust py-3 text-sm font-semibold text-cream transition-colors hover:bg-[#c8501f] disabled:opacity-60"
           >
             {submitting ? "Creating account..." : "Create Account"}
           </button>

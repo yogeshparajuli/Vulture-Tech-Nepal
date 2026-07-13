@@ -21,7 +21,7 @@ export default async function OrderConfirmationPage({
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-20 text-center sm:px-6 lg:px-8">
-      <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-rust/15">
+      <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-sm bg-rust/15">
         <CheckCircle2 className="h-8 w-8 text-gold" />
       </span>
       <h1 className="mt-6 font-display text-3xl font-bold text-cream">
@@ -31,8 +31,8 @@ export default async function OrderConfirmationPage({
         Thank you, {order.customerName}. Your order has been placed successfully.
       </p>
 
-      <div className="mt-8 rounded-2xl card-border bg-surface p-6 text-left">
-        <div className="flex items-center justify-between border-b border-white/5 pb-4">
+      <div className="mt-8 rounded-sm card-border bg-surface p-6 text-left">
+        <div className="flex items-center justify-between border-b border-[var(--line)] pb-4">
           <span className="text-sm text-slate">Order ID</span>
           <span className="font-mono text-sm text-cream">{order.id}</span>
         </div>
@@ -46,7 +46,7 @@ export default async function OrderConfirmationPage({
             </div>
           ))}
         </div>
-        <div className="mt-4 flex items-center justify-between border-t border-white/5 pt-4">
+        <div className="mt-4 flex items-center justify-between border-t border-[var(--line)] pt-4">
           <span className="font-medium text-cream">Total</span>
           <span className="font-display text-xl font-bold text-cream">
             {formatNPR(order.total)}
@@ -69,7 +69,7 @@ export default async function OrderConfirmationPage({
 
       <Link
         href="/shop"
-        className="mt-8 inline-flex items-center gap-2 rounded-full bg-rust px-6 py-3 text-sm font-semibold text-cream hover:bg-rust/90 transition-colors"
+        className="mt-8 inline-flex items-center gap-2 rounded-sm bg-rust px-6 py-3 text-sm font-semibold text-cream hover:bg-[#c8501f] transition-colors"
       >
         Continue Shopping
       </Link>

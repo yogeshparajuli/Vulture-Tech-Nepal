@@ -28,10 +28,10 @@ const POINTS = [
 
 export default function WhyUs() {
   return (
-    <section className="border-y border-white/5 bg-surface">
+    <section className="border-y border-[var(--line)] bg-surface">
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="mb-10 text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+          <span className="eyebrow">
             Why Vulture Tech
           </span>
           <h2 className="mt-2 font-display text-3xl font-bold text-cream">
@@ -46,9 +46,9 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-2xl bg-void/40 p-6 card-border"
+              className="rounded-sm bg-void/40 p-6 card-border"
             >
-              <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold/15 text-gold">
+              <span className="flex h-11 w-11 items-center justify-center rounded-sm bg-gold/15 text-gold">
                 <p.icon className="h-5 w-5" strokeWidth={1.75} />
               </span>
               <h3 className="mt-4 font-display text-base font-semibold text-cream">

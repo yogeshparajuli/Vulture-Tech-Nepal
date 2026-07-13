@@ -81,7 +81,7 @@ export default function ProductForm({ product }: { product?: ClientProduct }) {
             if (!slugTouched) setSlug(slugify(e.target.value));
           }}
           required
-          className="w-full rounded-xl card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
+          className="w-full rounded-sm card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
         />
       </div>
 
@@ -94,7 +94,7 @@ export default function ProductForm({ product }: { product?: ClientProduct }) {
             setSlugTouched(true);
           }}
           required
-          className="w-full rounded-xl card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
+          className="w-full rounded-sm card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
         />
       </div>
 
@@ -105,7 +105,7 @@ export default function ProductForm({ product }: { product?: ClientProduct }) {
           onChange={(e) => setDescription(e.target.value)}
           required
           rows={3}
-          className="w-full rounded-xl card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
+          className="w-full rounded-sm card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
         />
       </div>
 
@@ -118,7 +118,7 @@ export default function ProductForm({ product }: { product?: ClientProduct }) {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
-            className="w-full rounded-xl card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
+            className="w-full rounded-sm card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
           />
         </div>
         <div>
@@ -128,7 +128,7 @@ export default function ProductForm({ product }: { product?: ClientProduct }) {
             value={stock}
             onChange={(e) => setStock(e.target.value)}
             required
-            className="w-full rounded-xl card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
+            className="w-full rounded-sm card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
           />
         </div>
       </div>
@@ -139,7 +139,7 @@ export default function ProductForm({ product }: { product?: ClientProduct }) {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as typeof category)}
-            className="w-full rounded-xl card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
+            className="w-full rounded-sm card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
           >
             {CATEGORIES.map((c) => (
               <option key={c.key} value={c.key}>
@@ -154,7 +154,7 @@ export default function ProductForm({ product }: { product?: ClientProduct }) {
             value={brand}
             onChange={(e) => setBrand(e.target.value)}
             required
-            className="w-full rounded-xl card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
+            className="w-full rounded-sm card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
           />
         </div>
       </div>
@@ -168,7 +168,7 @@ export default function ProductForm({ product }: { product?: ClientProduct }) {
             value={imageColor}
             onChange={(e) => setImageColor(e.target.value.replace("#", ""))}
             required
-            className="w-full rounded-xl card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
+            className="w-full rounded-sm card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
           />
           <span
             className="h-9 w-9 shrink-0 rounded-lg border border-white/10"
@@ -185,7 +185,7 @@ export default function ProductForm({ product }: { product?: ClientProduct }) {
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
           placeholder="https://images.pexels.com/..."
-          className="w-full rounded-xl card-border bg-surface px-4 py-2.5 text-sm text-cream placeholder:text-slate/60 focus:border-gold/40 focus:outline-none"
+          className="w-full rounded-sm card-border bg-surface px-4 py-2.5 text-sm text-cream placeholder:text-slate/60 focus:border-gold/40 focus:outline-none"
         />
       </div>
 
@@ -197,7 +197,7 @@ export default function ProductForm({ product }: { product?: ClientProduct }) {
           value={specsText}
           onChange={(e) => setSpecsText(e.target.value)}
           rows={4}
-          className="w-full rounded-xl card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
+          className="w-full rounded-sm card-border bg-surface px-4 py-2.5 text-sm text-cream focus:border-gold/40 focus:outline-none"
         />
       </div>
 
@@ -216,7 +216,7 @@ export default function ProductForm({ product }: { product?: ClientProduct }) {
       <button
         type="submit"
         disabled={submitting}
-        className="rounded-full bg-rust px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-rust/90 disabled:opacity-60"
+        className="rounded-sm bg-rust px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-[#c8501f] disabled:opacity-60"
       >
         {submitting ? "Saving..." : isEdit ? "Save Changes" : "Create Product"}
       </button>

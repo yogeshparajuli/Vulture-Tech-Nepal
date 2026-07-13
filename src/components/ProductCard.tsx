@@ -14,35 +14,40 @@ export default function ProductCard({ product }: { product: ClientProduct }) {
   const outOfStock = product.stock <= 0;
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl card-border bg-surface transition-colors hover:border-gold/30">
-      <Link href={`/product/${product.slug}`} className="block">
+    <div className="group relative flex flex-col overflow-hidden rounded-sm border border-[var(--line)] bg-surface transition-colors hover:border-[var(--line-strong)]">
+      <Link href={`/product/${product.slug}`} className="relative block border-b border-[var(--line)]">
         <ProductImage
           category={product.category}
           color={product.imageColor}
           imageUrl={product.imageUrl}
-          className="aspect-square w-full transition-transform duration-500 group-hover:scale-[1.03]"
+          className="aspect-square w-full"
         />
-      </Link>
-      <div className="flex flex-1 flex-col gap-2 p-4">
-        <span className="text-[11px] font-medium uppercase tracking-wider text-gold">
-          {cat?.label ?? product.category}
+        <span className="mono absolute left-2.5 top-2.5 rounded-sm bg-void/70 px-1.5 py-0.5 text-[9px] uppercase tracking-[0.14em] text-gold backdrop-blur-sm">
+          {cat?.short ?? product.category}
         </span>
+      </Link>
+
+      <div className="flex flex-1 flex-col gap-1.5 p-4">
         <Link href={`/product/${product.slug}`}>
-          <h3 className="line-clamp-2 text-sm font-semibold text-cream hover:text-gold transition-colors">
+          <h3 className="line-clamp-2 text-[13.5px] font-medium leading-snug text-cream transition-colors group-hover:text-gold">
             {product.name}
           </h3>
         </Link>
-        <p className="text-xs text-slate">{product.brand}</p>
-        {product.averageRating !== null && (
-          <div className="flex items-center gap-1 text-gold">
-            <Star className="h-3 w-3" fill="currentColor" strokeWidth={0} />
-            <span className="text-xs text-slate">
-              {product.averageRating.toFixed(1)} ({product.reviewCount})
-            </span>
-          </div>
-        )}
-        <div className="mt-auto flex items-center justify-between pt-2">
-          <span className="font-display text-lg font-bold text-cream">
+        <div className="mono flex items-center gap-2 text-[11px] text-slate">
+          <span className="uppercase tracking-wider">{product.brand}</span>
+          {product.averageRating !== null && (
+            <>
+              <span className="text-[var(--line-strong)]">/</span>
+              <span className="flex items-center gap-1 text-gold">
+                <Star className="h-2.5 w-2.5" fill="currentColor" strokeWidth={0} />
+                {product.averageRating.toFixed(1)}
+              </span>
+            </>
+          )}
+        </div>
+
+        <div className="mt-auto flex items-end justify-between pt-3">
+          <span className="mono text-base font-semibold text-cream">
             {formatNPR(product.price)}
           </span>
           <button
@@ -59,14 +64,16 @@ export default function ProductCard({ product }: { product: ClientProduct }) {
               })
             }
             disabled={outOfStock}
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-rust text-cream transition-colors hover:bg-rust/90 disabled:cursor-not-allowed disabled:bg-slate/30"
+            className="flex h-9 w-9 items-center justify-center rounded-sm bg-rust text-cream transition-colors hover:bg-[#c8501f] disabled:cursor-not-allowed disabled:bg-surface-2 disabled:text-slate"
             aria-label="Add to cart"
           >
             <Plus className="h-4 w-4" />
           </button>
         </div>
         {outOfStock && (
-          <span className="text-xs font-medium text-rust">Out of stock</span>
+          <span className="mono text-[10px] uppercase tracking-widest text-rust">
+            Out of stock
+          </span>
         )}
       </div>
     </div>

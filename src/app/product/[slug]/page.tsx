@@ -64,9 +64,7 @@ export default async function ProductPage({
         />
 
         <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-gold">
-            {cat?.label}
-          </span>
+          <span className="eyebrow">{cat?.label}</span>
           <h1 className="mt-2 font-display text-3xl font-bold text-cream sm:text-4xl">
             {product.name}
           </h1>

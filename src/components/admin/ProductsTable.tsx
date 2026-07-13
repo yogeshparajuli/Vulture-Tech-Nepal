@@ -33,14 +33,14 @@ export default function ProductsTable({ products }: { products: ClientProduct[] 
   return (
     <div>
       {error && (
-        <p className="mb-4 rounded-xl border border-rust/40 bg-rust/10 px-4 py-3 text-sm text-rust">
+        <p className="mb-4 rounded-sm border border-rust/40 bg-rust/10 px-4 py-3 text-sm text-rust">
           {error}
         </p>
       )}
-      <div className="overflow-x-auto rounded-2xl card-border bg-surface">
+      <div className="overflow-x-auto rounded-sm card-border bg-surface">
         <table className="w-full text-left text-sm">
           <thead>
-            <tr className="border-b border-white/5 text-xs text-slate">
+            <tr className="border-b border-[var(--line)] text-xs text-slate">
               <th className="px-4 py-3 font-medium">Product</th>
               <th className="px-4 py-3 font-medium">Category</th>
               <th className="px-4 py-3 font-medium">Price</th>
@@ -51,7 +51,7 @@ export default function ProductsTable({ products }: { products: ClientProduct[] 
           </thead>
           <tbody>
             {products.map((p) => (
-              <tr key={p.id} className="border-b border-white/5 last:border-0">
+              <tr key={p.id} className="border-b border-[var(--line)] last:border-0">
                 <td className="px-4 py-3">
                   <p className="text-cream">{p.name}</p>
                   <p className="text-xs text-slate">{p.brand}</p>

@@ -12,25 +12,23 @@ const ICONS: Record<CategoryKey, typeof Camera> = {
 
 export default function ProductImage({
   category,
-  color,
   imageUrl,
   className = "",
   iconClassName = "w-10 h-10",
+  rounded = "rounded-sm",
 }: {
   category: string;
-  color: string;
+  color?: string;
   imageUrl?: string | null;
   className?: string;
   iconClassName?: string;
+  rounded?: string;
 }) {
   const Icon = ICONS[category as CategoryKey] ?? Camera;
-  const hex = color.startsWith("#") ? color : `#${color}`;
 
   if (imageUrl) {
     return (
-      <div
-        className={`relative overflow-hidden rounded-2xl bg-surface-2 ${className}`}
-      >
+      <div className={`relative overflow-hidden bg-surface-2 ${rounded} ${className}`}>
         <Image
           src={imageUrl}
           alt=""
@@ -38,40 +36,16 @@ export default function ProductImage({
           sizes="(max-width: 768px) 50vw, 300px"
           className="object-cover"
         />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `linear-gradient(160deg, ${hex}22 0%, transparent 45%)`,
-          }}
-        />
       </div>
     );
   }
 
   return (
     <div
-      className={`relative flex items-center justify-center overflow-hidden rounded-2xl ${className}`}
-      style={{
-        background: `radial-gradient(circle at 30% 20%, ${hex}33, transparent 60%), linear-gradient(160deg, #0e0a09 0%, #191211 100%)`,
-      }}
+      className={`relative flex items-center justify-center overflow-hidden bg-surface ${rounded} ${className}`}
     >
-      <div
-        className="absolute inset-0 opacity-40"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(237,229,220,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(237,229,220,0.05) 1px, transparent 1px)",
-          backgroundSize: "18px 18px",
-        }}
-      />
-      <div
-        className="relative flex items-center justify-center rounded-full p-5"
-        style={{
-          background: `${hex}22`,
-          boxShadow: `0 0 40px ${hex}55`,
-        }}
-      >
-        <Icon className={iconClassName} style={{ color: hex }} strokeWidth={1.5} />
-      </div>
+      <div className="grid-field pointer-events-none absolute inset-0 opacity-60" />
+      <Icon className={`relative text-slate ${iconClassName}`} strokeWidth={1.25} />
     </div>
   );
 }

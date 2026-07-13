@@ -36,7 +36,7 @@ export default async function AccountPage() {
       ) : (
         <div className="mt-8 space-y-4">
           {orders.map((order) => (
-            <div key={order.id} className="rounded-2xl card-border bg-surface p-6">
+            <div key={order.id} className="rounded-sm card-border bg-surface p-6">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <p className="font-mono text-xs text-slate">{order.id}</p>
@@ -49,12 +49,12 @@ export default async function AccountPage() {
                   </p>
                 </div>
                 <span
-                  className={`rounded-full px-3 py-1 text-xs font-semibold ${STATUS_STYLES[order.status] ?? "bg-surface-2 text-cream"}`}
+                  className={`rounded-sm px-3 py-1 text-xs font-semibold ${STATUS_STYLES[order.status] ?? "bg-surface-2 text-cream"}`}
                 >
                   {order.status}
                 </span>
               </div>
-              <div className="mt-4 space-y-2 border-t border-white/5 pt-4">
+              <div className="mt-4 space-y-2 border-t border-[var(--line)] pt-4">
                 {order.items.map((item) => (
                   <div key={item.id} className="flex items-center justify-between text-sm">
                     <span className="text-cream">
@@ -64,7 +64,7 @@ export default async function AccountPage() {
                   </div>
                 ))}
               </div>
-              <div className="mt-4 flex items-center justify-between border-t border-white/5 pt-4">
+              <div className="mt-4 flex items-center justify-between border-t border-[var(--line)] pt-4">
                 <span className="text-sm font-medium text-cream">Total</span>
                 <span className="font-display text-lg font-bold text-cream">
                   {formatNPR(order.total)}

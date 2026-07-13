@@ -76,7 +76,7 @@ export default function CheckoutForm({
         <p className="text-slate">Your cart is empty.</p>
         <Link
           href="/shop"
-          className="rounded-full bg-rust px-6 py-3 text-sm font-semibold text-cream hover:bg-rust/90 transition-colors"
+          className="rounded-sm bg-rust px-6 py-3 text-sm font-semibold text-cream hover:bg-[#c8501f] transition-colors"
         >
           Browse Products
         </Link>
@@ -87,7 +87,7 @@ export default function CheckoutForm({
   return (
     <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
       <form onSubmit={handleSubmit} className="space-y-6 lg:col-span-2">
-        <div className="rounded-2xl card-border bg-surface p-6">
+        <div className="rounded-sm card-border bg-surface p-6">
           <h2 className="font-display text-lg font-semibold text-cream">
             Shipping Details
           </h2>
@@ -97,7 +97,7 @@ export default function CheckoutForm({
               required
               defaultValue={defaultName}
               placeholder="Full Name"
-              className="rounded-xl card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none sm:col-span-2"
+              className="rounded-sm card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none sm:col-span-2"
             />
             <input
               name="email"
@@ -105,37 +105,37 @@ export default function CheckoutForm({
               required
               defaultValue={defaultEmail}
               placeholder="Email Address"
-              className="rounded-xl card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
+              className="rounded-sm card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
             />
             <input
               name="phone"
               type="tel"
               required
               placeholder="Phone Number"
-              className="rounded-xl card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
+              className="rounded-sm card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
             />
             <input
               name="address"
               required
               placeholder="Street Address"
-              className="rounded-xl card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none sm:col-span-2"
+              className="rounded-sm card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none sm:col-span-2"
             />
             <input
               name="city"
               required
               placeholder="City"
-              className="rounded-xl card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
+              className="rounded-sm card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
             />
           </div>
         </div>
 
-        <div className="rounded-2xl card-border bg-surface p-6">
+        <div className="rounded-sm card-border bg-surface p-6">
           <h2 className="font-display text-lg font-semibold text-cream">
             Payment Method
           </h2>
           <div className="mt-4 space-y-3">
             <label
-              className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3.5 transition-colors ${
+              className={`flex cursor-pointer items-center gap-3 rounded-sm border px-4 py-3.5 transition-colors ${
                 paymentMethod === "COD"
                   ? "border-gold/50 bg-void"
                   : "border-white/10 bg-void/40"
@@ -156,13 +156,13 @@ export default function CheckoutForm({
             </label>
 
             <label
-              className={`flex items-center gap-3 rounded-xl border px-4 py-3.5 transition-colors ${
+              className={`flex items-center gap-3 rounded-sm border px-4 py-3.5 transition-colors ${
                 stripeEnabled
                   ? "cursor-pointer " +
                     (paymentMethod === "STRIPE"
                       ? "border-gold/50 bg-void"
                       : "border-white/10 bg-void/40")
-                  : "cursor-not-allowed border-white/5 bg-void/20 opacity-50"
+                  : "cursor-not-allowed border-[var(--line)] bg-void/20 opacity-50"
               }`}
             >
               <input
@@ -187,7 +187,7 @@ export default function CheckoutForm({
         </div>
 
         {error && (
-          <p className="rounded-xl border border-rust/40 bg-rust/10 px-4 py-3 text-sm text-rust">
+          <p className="rounded-sm border border-rust/40 bg-rust/10 px-4 py-3 text-sm text-rust">
             {error}
           </p>
         )}
@@ -195,13 +195,13 @@ export default function CheckoutForm({
         <button
           type="submit"
           disabled={submitting}
-          className="w-full rounded-full bg-rust py-3.5 text-sm font-semibold text-cream transition-colors hover:bg-rust/90 disabled:opacity-60"
+          className="w-full rounded-sm bg-rust py-3.5 text-sm font-semibold text-cream transition-colors hover:bg-[#c8501f] disabled:opacity-60"
         >
           {submitting ? "Placing Order..." : `Place Order — ${formatNPR(subtotal)}`}
         </button>
       </form>
 
-      <div className="h-fit space-y-4 rounded-2xl card-border bg-surface p-6">
+      <div className="h-fit space-y-4 rounded-sm card-border bg-surface p-6">
         <h2 className="font-display text-lg font-semibold text-cream">Your Order</h2>
         <div className="space-y-3">
           {items.map((item) => (
@@ -225,7 +225,7 @@ export default function CheckoutForm({
             </div>
           ))}
         </div>
-        <div className="flex items-center justify-between border-t border-white/5 pt-4">
+        <div className="flex items-center justify-between border-t border-[var(--line)] pt-4">
           <span className="font-medium text-cream">Total</span>
           <span className="font-display text-xl font-bold text-cream">
             {formatNPR(subtotal)}

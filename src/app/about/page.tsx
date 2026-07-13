@@ -30,12 +30,11 @@ const VALUES = [
 export default function AboutPage() {
   return (
     <div>
-      <section className="bg-noise border-b border-white/5">
-        <div className="mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 lg:px-8">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
-            About Us
-          </span>
-          <h1 className="mt-3 text-balance font-display text-4xl font-bold text-cream sm:text-5xl">
+      <section className="relative overflow-hidden border-b border-[var(--line)]">
+        <div className="grid-field pointer-events-none absolute inset-0 opacity-40" />
+        <div className="relative mx-auto max-w-5xl px-4 py-24 text-center sm:px-6 lg:px-8">
+          <span className="eyebrow">About / Vulture Tech Nepal</span>
+          <h1 className="mt-4 text-balance font-display text-4xl font-semibold tracking-[-0.02em] text-cream sm:text-5xl">
             Security equipment you can actually trust
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-balance text-slate">
@@ -48,26 +47,28 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 divide-x divide-[var(--line)] border-y border-[var(--line)] sm:grid-cols-4">
           {STATS.map((s) => (
-            <div key={s.label} className="text-center">
-              <p className="font-display text-3xl font-bold text-cream">{s.value}</p>
-              <p className="mt-1 text-xs text-slate">{s.label}</p>
+            <div key={s.label} className="px-5 py-8">
+              <p className="mono text-3xl font-semibold text-cream">{s.value}</p>
+              <p className="mono mt-2 text-[10px] uppercase tracking-[0.16em] text-slate">
+                {s.label}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="border-y border-white/5 bg-surface">
+      <section className="border-y border-[var(--line)] bg-surface">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="mb-10 text-center">
             <h2 className="font-display text-3xl font-bold text-cream">What we stand for</h2>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             {VALUES.map((v) => (
-              <div key={v.title} className="rounded-2xl bg-void/40 p-6 card-border">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold/15 text-gold">
+              <div key={v.title} className="rounded-sm bg-void/40 p-6 card-border">
+                <span className="flex h-11 w-11 items-center justify-center rounded-sm bg-gold/15 text-gold">
                   <v.icon className="h-5 w-5" strokeWidth={1.75} />
                 </span>
                 <h3 className="mt-4 font-display text-base font-semibold text-cream">
@@ -81,7 +82,7 @@ export default function AboutPage() {
       </section>
 
       <section className="mx-auto max-w-5xl px-4 py-16 text-center sm:px-6 lg:px-8">
-        <span className="mx-auto flex h-11 w-11 items-center justify-center rounded-xl bg-rust/15 text-rust">
+        <span className="mx-auto flex h-11 w-11 items-center justify-center rounded-sm bg-rust/15 text-rust">
           <MapPin className="h-5 w-5" />
         </span>
         <h2 className="mt-4 font-display text-2xl font-bold text-cream">

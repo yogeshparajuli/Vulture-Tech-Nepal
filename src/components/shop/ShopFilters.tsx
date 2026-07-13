@@ -38,14 +38,14 @@ export default function ShopFilters({ resultCount }: { resultCount: number }) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search products..."
-          className="w-full rounded-full card-border bg-surface py-3 pl-10 pr-4 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
+          className="w-full rounded-sm card-border bg-surface py-3 pl-10 pr-4 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
         />
       </form>
 
       <div className="flex flex-wrap items-center gap-2">
         <button
           onClick={() => updateParams({ category: null })}
-          className={`rounded-full px-4 py-2 text-xs font-medium transition-colors ${
+          className={`rounded-sm px-4 py-2 text-xs font-medium transition-colors ${
             activeCategory === ""
               ? "bg-rust text-cream"
               : "card-border bg-surface text-slate hover:text-cream"
@@ -57,7 +57,7 @@ export default function ShopFilters({ resultCount }: { resultCount: number }) {
           <button
             key={cat.key}
             onClick={() => updateParams({ category: cat.slug })}
-            className={`rounded-full px-4 py-2 text-xs font-medium transition-colors ${
+            className={`rounded-sm px-4 py-2 text-xs font-medium transition-colors ${
               activeCategory === cat.slug
                 ? "bg-rust text-cream"
                 : "card-border bg-surface text-slate hover:text-cream"
@@ -68,12 +68,12 @@ export default function ShopFilters({ resultCount }: { resultCount: number }) {
         ))}
       </div>
 
-      <div className="flex items-center justify-between border-t border-white/5 pt-4">
+      <div className="flex items-center justify-between border-t border-[var(--line)] pt-4">
         <p className="text-xs text-slate">{resultCount} products</p>
         <select
           value={activeSort}
           onChange={(e) => updateParams({ sort: e.target.value })}
-          className="rounded-full card-border bg-surface px-4 py-2 text-xs font-medium text-cream focus:border-gold/40 focus:outline-none"
+          className="rounded-sm card-border bg-surface px-4 py-2 text-xs font-medium text-cream focus:border-gold/40 focus:outline-none"
         >
           <option value="newest">Newest</option>
           <option value="price-asc">Price: Low to High</option>

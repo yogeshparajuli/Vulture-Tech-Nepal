@@ -30,28 +30,28 @@ export default function ContactForm() {
         <input
           required
           placeholder="Full Name"
-          className="rounded-xl card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
+          className="rounded-sm card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
         />
         <input
           required
           type="email"
           placeholder="Email Address"
-          className="rounded-xl card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
+          className="rounded-sm card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
         />
       </div>
       <input
         placeholder="Phone Number (optional)"
-        className="w-full rounded-xl card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
+        className="w-full rounded-sm card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
       />
       <textarea
         required
         rows={5}
         placeholder="How can we help?"
-        className="w-full rounded-xl card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
+        className="w-full rounded-sm card-border bg-void px-4 py-3 text-sm text-cream placeholder:text-slate focus:border-gold/40 focus:outline-none"
       />
       <button
         type="submit"
-        className="rounded-full bg-rust px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-rust/90"
+        className="rounded-sm bg-rust px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-[#c8501f]"
       >
         Send Message
       </button>

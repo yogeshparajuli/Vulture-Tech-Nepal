@@ -34,10 +34,10 @@ export default function OrdersTable({ orders }: { orders: OrderRow[] }) {
   }
 
   return (
-    <div className="overflow-x-auto rounded-2xl card-border bg-surface">
+    <div className="overflow-x-auto rounded-sm card-border bg-surface">
       <table className="w-full text-left text-sm">
         <thead>
-          <tr className="border-b border-white/5 text-xs text-slate">
+          <tr className="border-b border-[var(--line)] text-xs text-slate">
             <th className="px-4 py-3 font-medium">Customer</th>
             <th className="px-4 py-3 font-medium">City</th>
             <th className="px-4 py-3 font-medium">Total</th>
@@ -47,7 +47,7 @@ export default function OrdersTable({ orders }: { orders: OrderRow[] }) {
         </thead>
         <tbody>
           {orders.map((o) => (
-            <tr key={o.id} className="border-b border-white/5 last:border-0">
+            <tr key={o.id} className="border-b border-[var(--line)] last:border-0">
               <td className="px-4 py-3">
                 <p className="text-cream">{o.customerName}</p>
                 <p className="text-xs text-slate">{o.customerPhone}</p>

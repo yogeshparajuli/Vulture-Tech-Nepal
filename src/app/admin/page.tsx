@@ -34,7 +34,7 @@ export default async function AdminDashboard() {
 
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((s) => (
-          <div key={s.label} className="rounded-2xl card-border bg-surface p-5">
+          <div key={s.label} className="rounded-sm card-border bg-surface p-5">
             <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-rust/15 text-rust">
               <s.icon className="h-4.5 w-4.5" />
             </span>
@@ -44,12 +44,12 @@ export default async function AdminDashboard() {
         ))}
       </div>
 
-      <div className="mt-8 rounded-2xl card-border bg-surface p-6">
+      <div className="mt-8 rounded-sm card-border bg-surface p-6">
         <h2 className="font-display text-lg font-semibold text-cream">Recent Orders</h2>
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-left text-sm">
             <thead>
-              <tr className="border-b border-white/5 text-xs text-slate">
+              <tr className="border-b border-[var(--line)] text-xs text-slate">
                 <th className="pb-2 font-medium">Order ID</th>
                 <th className="pb-2 font-medium">Customer</th>
                 <th className="pb-2 font-medium">Total</th>
@@ -58,7 +58,7 @@ export default async function AdminDashboard() {
             </thead>
             <tbody>
               {recentOrders.map((o) => (
-                <tr key={o.id} className="border-b border-white/5 last:border-0">
+                <tr key={o.id} className="border-b border-[var(--line)] last:border-0">
                   <td className="py-3 font-mono text-xs text-slate">{o.id.slice(0, 10)}…</td>
                   <td className="py-3 text-cream">{o.customerName}</td>
                   <td className="py-3 text-gold">{formatNPR(o.total)}</td>

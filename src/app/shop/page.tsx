@@ -31,7 +31,7 @@ export default async function ShopPage({
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="mb-10">
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+        <span className="eyebrow">
           Shop
         </span>
         <h1 className="mt-2 font-display text-3xl font-bold text-cream sm:text-4xl">

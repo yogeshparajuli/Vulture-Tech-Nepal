@@ -28,7 +28,7 @@ export default function ReviewsSection({
 
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {reviews.map((review) => (
-          <div key={review.id} className="rounded-2xl card-border bg-surface p-5">
+          <div key={review.id} className="rounded-sm card-border bg-surface p-5">
             <div className="flex items-center gap-3">
               <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full bg-surface-2">
                 <Image

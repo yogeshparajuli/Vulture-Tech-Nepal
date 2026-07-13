@@ -1,16 +1,25 @@
 @import "tailwindcss";
 
+/*
+  Vulture Tech Nepal — "Field Optics"
+  A precision-instrument identity: warm technical ink, hairline structure,
+  a monospace readout layer, and viewfinder crop-mark framing. No glows,
+  no gradient text.
+*/
+
 :root {
-  --color-void: #030202;
-  --color-surface: #0e0a09;
-  --color-surface-2: #191211;
-  --color-maroon: #581f11;
-  --color-slate: #5c5350;
-  --color-rust: #aa4927;
-  --color-cream: #ede5dc;
-  --color-gold: #baa175;
-  --border-soft: rgba(186, 161, 117, 0.14);
-  --border-softer: rgba(186, 161, 117, 0.08);
+  --color-void: #0c0b09; /* base ink */
+  --color-surface: #16130f; /* raised surface */
+  --color-surface-2: #201a15; /* pressed / inset */
+  --color-maroon: #3a1b10; /* deep brick, used sparingly */
+  --color-slate: #8f857b; /* muted / secondary text */
+  --color-rust: #b4471f; /* single accent — solid only */
+  --color-cream: #ece6dc; /* primary text */
+  --color-gold: #c4a468; /* brass — technical/mono accent */
+
+  --line: rgba(236, 230, 220, 0.11); /* hairline rule */
+  --line-strong: rgba(236, 230, 220, 0.2);
+  --radius: 3px;
 }
 
 @theme inline {
@@ -22,8 +31,12 @@
   --color-rust: var(--color-rust);
   --color-cream: var(--color-cream);
   --color-gold: var(--color-gold);
-  --font-sans: var(--font-manrope);
-  --font-display: var(--font-grotesk);
+  --font-sans: var(--font-plex);
+  --font-display: var(--font-plex);
+  --font-mono: var(--font-plex-mono);
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
 }
 
 html {
@@ -33,7 +46,8 @@ html {
 body {
   background: var(--color-void);
   color: var(--color-cream);
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-plex), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
@@ -41,34 +55,109 @@ body {
   color: var(--color-cream);
 }
 
-/* thin, muted scrollbar to match the dark theme */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
 }
 ::-webkit-scrollbar-track {
   background: var(--color-void);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-surface-2);
-  border-radius: 999px;
-  border: 2px solid var(--color-void);
+  border: 3px solid var(--color-void);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2c231c;
 }
 
 .text-balance {
   text-wrap: balance;
 }
 
-.bg-noise {
-  background-image: radial-gradient(
-      circle at 20% 20%,
-      rgba(170, 73, 39, 0.16),
-      transparent 45%
-    ),
-    radial-gradient(circle at 80% 0%, rgba(186, 161, 117, 0.1), transparent 40%),
-    radial-gradient(circle at 50% 100%, rgba(88, 31, 17, 0.35), transparent 55%);
+/* ---- The technical readout layer ---------------------------------------- */
+.mono {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-feature-settings: "tnum" 1;
 }
 
+/* Eyebrow / label — small, tracked, uppercase monospace */
+.eyebrow {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+/* ---- Structure over decoration ------------------------------------------ */
+.hairline {
+  border: 1px solid var(--line);
+}
 .card-border {
-  border: 1px solid var(--border-soft);
+  border: 1px solid var(--line);
+}
+
+/* Panel: the workhorse surface. Sharp, hairlined, quiet. */
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* Fine engineering grid — replaces the old colored glow field. */
+.grid-field {
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+/* Viewfinder corner crop-marks. Wrap any element; ticks sit at 4 corners. */
+.crop {
+  position: relative;
+}
+.crop::before,
+.crop::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 2;
+}
+.crop::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1.5px solid var(--color-rust);
+  border-left: 1.5px solid var(--color-rust);
+}
+.crop::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1.5px solid var(--color-rust);
+  border-right: 1.5px solid var(--color-rust);
+}
+
+/* A live status dot (REC ●) */
+.rec-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--color-rust);
+  animation: rec 1.6s steps(1, end) infinite;
+}
+@keyframes rec {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rec-dot {
+    animation: none;
+  }
 }

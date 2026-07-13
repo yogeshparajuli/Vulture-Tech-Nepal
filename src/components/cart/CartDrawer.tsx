@@ -28,13 +28,13 @@ export default function CartDrawer() {
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
             className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-surface card-border border-l shadow-2xl"
           >
-            <div className="flex items-center justify-between border-b border-white/5 px-6 py-5">
+            <div className="flex items-center justify-between border-b border-[var(--line)] px-6 py-5">
               <h2 className="font-display text-lg font-semibold text-cream">
                 Your Cart {items.length > 0 && `(${items.length})`}
               </h2>
               <button
                 onClick={closeCart}
-                className="rounded-full p-2 text-slate hover:bg-surface-2 hover:text-cream transition-colors"
+                className="rounded-sm p-2 text-slate hover:bg-surface-2 hover:text-cream transition-colors"
                 aria-label="Close cart"
               >
                 <X className="h-5 w-5" />
@@ -48,7 +48,7 @@ export default function CartDrawer() {
                 <Link
                   href="/shop"
                   onClick={closeCart}
-                  className="mt-2 rounded-full bg-rust px-5 py-2.5 text-sm font-semibold text-cream hover:bg-rust/90 transition-colors"
+                  className="mt-2 rounded-sm bg-rust px-5 py-2.5 text-sm font-semibold text-cream hover:bg-[#c8501f] transition-colors"
                 >
                   Browse Products
                 </Link>
@@ -83,7 +83,7 @@ export default function CartDrawer() {
                           </button>
                         </div>
                         <div className="mt-2 flex items-center justify-between">
-                          <div className="flex items-center gap-2 rounded-full border border-white/10 px-2 py-1">
+                          <div className="flex items-center gap-2 rounded-sm border border-white/10 px-2 py-1">
                             <button
                               onClick={() => setQuantity(item.productId, item.quantity - 1)}
                               className="text-slate hover:text-cream transition-colors"
@@ -112,7 +112,7 @@ export default function CartDrawer() {
                   ))}
                 </div>
 
-                <div className="border-t border-white/5 px-6 py-5 space-y-4">
+                <div className="border-t border-[var(--line)] px-6 py-5 space-y-4">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-slate">Subtotal</span>
                     <span className="font-display text-lg font-semibold text-cream">
@@ -122,14 +122,14 @@ export default function CartDrawer() {
                   <Link
                     href="/checkout"
                     onClick={closeCart}
-                    className="block w-full rounded-full bg-rust py-3 text-center text-sm font-semibold text-cream hover:bg-rust/90 transition-colors"
+                    className="block w-full rounded-sm bg-rust py-3 text-center text-sm font-semibold text-cream hover:bg-[#c8501f] transition-colors"
                   >
                     Proceed to Checkout
                   </Link>
                   <Link
                     href="/cart"
                     onClick={closeCart}
-                    className="block w-full rounded-full border border-white/10 py-3 text-center text-sm font-semibold text-cream hover:bg-surface-2 transition-colors"
+                    className="block w-full rounded-sm border border-white/10 py-3 text-center text-sm font-semibold text-cream hover:bg-surface-2 transition-colors"
                   >
                     View Cart
                   </Link>

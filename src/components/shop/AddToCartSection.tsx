@@ -31,10 +31,10 @@ export default function AddToCartSection({ product }: { product: ClientProduct }
 
   return (
     <div className="flex flex-wrap items-center gap-4">
-      <div className="flex items-center gap-3 rounded-full card-border bg-surface px-2 py-2">
+      <div className="flex items-center gap-3 rounded-sm card-border bg-surface px-2 py-2">
         <button
           onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-          className="flex h-8 w-8 items-center justify-center rounded-full text-slate hover:bg-surface-2 hover:text-cream transition-colors"
+          className="flex h-8 w-8 items-center justify-center rounded-sm text-slate hover:bg-surface-2 hover:text-cream transition-colors"
           aria-label="Decrease quantity"
         >
           <Minus className="h-4 w-4" />
@@ -44,7 +44,7 @@ export default function AddToCartSection({ product }: { product: ClientProduct }
         </span>
         <button
           onClick={() => setQuantity((q) => Math.min(product.stock, q + 1))}
-          className="flex h-8 w-8 items-center justify-center rounded-full text-slate hover:bg-surface-2 hover:text-cream transition-colors"
+          className="flex h-8 w-8 items-center justify-center rounded-sm text-slate hover:bg-surface-2 hover:text-cream transition-colors"
           aria-label="Increase quantity"
         >
           <Plus className="h-4 w-4" />
@@ -54,7 +54,7 @@ export default function AddToCartSection({ product }: { product: ClientProduct }
       <button
         onClick={handleAdd}
         disabled={outOfStock}
-        className="flex flex-1 min-w-[200px] items-center justify-center gap-2 rounded-full bg-rust px-6 py-3.5 text-sm font-semibold text-cream shadow-[0_0_30px_rgba(170,73,39,0.35)] transition-all hover:bg-rust/90 disabled:cursor-not-allowed disabled:bg-slate/30 disabled:shadow-none"
+        className="flex flex-1 min-w-[200px] items-center justify-center gap-2 rounded-sm bg-rust px-6 py-3.5 text-sm font-semibold text-cream transition-colors hover:bg-[#c8501f] disabled:cursor-not-allowed disabled:bg-surface-2 disabled:text-slate"
       >
         {added ? (
           <>
